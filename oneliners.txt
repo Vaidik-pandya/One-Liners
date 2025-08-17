@@ -1,0 +1,8 @@
+1st 
+
+ subfinder -d domain.com -silent  | \
+while read host; do \
+  for path in /config.js /config.json /app/config.js /settings.json /database.json /firebase.json /.env /.env.production /api_keys.json /credentials.json /secrets.json /google-services.json /package.json /package-lock.json /composer.json /pom.xml /docker-compose.yml /manifest.json /service-worker.js; do \
+    echo "$host$path"; \
+  done; \
+done | httpx -mc 200
