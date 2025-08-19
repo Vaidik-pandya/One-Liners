@@ -6,3 +6,13 @@ while read host; do \
     echo "$host$path"; \
   done; \
 done | httpx -mc 200
+
+
+
+2nd 
+
+cat waybacks.txt | \ 
+sed -E 's#(redirect=|url=|next=|return=|dest=|destination=|continue=|goto=|redirecturl=)[^&]*#\1https://evil.com#gI' | \
+httpx -silent -mc 301,302,307,308 -location
+
+
