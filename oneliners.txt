@@ -16,3 +16,10 @@ sed -E 's#(redirect=|url=|next=|return=|dest=|destination=|continue=|goto=|redir
 httpx -silent -mc 301,302,307,308 -location
 
 
+3rd 
+
+cat jsfiles.txt | xargs -I% curl -s "%" | \
+grep -Eo "(http|https)://[a-zA-Z0-9./?=_-]*|/[-a-zA-Z0-9@:%_+.~#?&//=]*" | sort -u
+
+
+
