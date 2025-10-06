@@ -23,3 +23,7 @@ grep -Eo "(http|https)://[a-zA-Z0-9./?=_-]*|/[-a-zA-Z0-9@:%_+.~#?&//=]*" | sort 
 
 
 
+4th
+
+while read -r url; do curl -sL --max-time 10 "$url" 2>/dev/null | grep -Eo 'https?://[A-Za-z0-9._-]+\.firebaseio\.com|https?://[A-Za-z0-9._-]+\.firebasedatabase\.app|https?://[A-Za-z0-9._-]+\.s3\.amazonaws\.com|mongodb://[^[:space:]]+|redis://[^[:space:]]+|postgresql?://[^[:space:]]+|[Pp]assword[[:space:]]*[:=][[:space:]]*[^[:space:]]{6,128}|AIza[0-9A-Za-z_-]{35}' | sort -u | sed "s|^|$url -> |" | grep -vE '(\.env|config\.json|\.php|settings\.py|application\.yml)$'; done < jsf
+
